@@ -81,7 +81,7 @@ export default function Home() {
                   <div className={styles.info}>
                       <p><strong>Email:</strong> {item.email}</p>
                       <p><strong>Tel:</strong> {item.telefone}</p>
-                      <p><strong>NIF:</strong> {item.telefone}</p>
+                      <p><strong>NIF:</strong> {item.nif}</p>
                   </div>
                   <Link href={`/analizar/${item.id}`} className={styles.btnPerfil}>Ver Perfil</Link>
               </div>
