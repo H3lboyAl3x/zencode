@@ -146,3 +146,100 @@
   color: #777;
   margin-top: 50px;
 }
+
+.conteudo {
+  padding: 40px 10%;
+}
+
+.btnVoltar {
+  background: none;
+  border: none;
+  color: #06448a;
+  cursor: pointer;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.painel {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  overflow: hidden;
+}
+
+.topoPainel {
+  background: #1a1a1a;
+  color: white;
+  padding: 40px;
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.avatar {
+  width: 80px;
+  height: 80px;
+  background: #dba100;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.statusBadge {
+  background: #28a745;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+}
+
+.gridInfo {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  padding: 40px;
+  gap: 30px;
+}
+
+.sessao h3 {
+  color: #06448a;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.sessao p {
+  margin: 10px 0;
+  color: #555;
+}
+
+.acoesFinal {
+  padding: 30px 40px;
+  background: #fcfcfc;
+  border-top: 1px solid #eee;
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+}
+
+.btnAprovar {
+  background: #06448a;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btnRejeitar {
+  background: #fff;
+  color: #dc3545;
+  border: 1px solid #dc3545;
+  padding: 12px 25px;
+  border-radius: 6px;
+  cursor: pointer;
+}

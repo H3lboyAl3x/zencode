@@ -74,7 +74,9 @@
   transition: 0.3s;
 }
 
-.btnAtualizar:hover { background: #043368; }
+.btnAtualizar:hover { 
+  background: #043368;
+}
 
 .cards {
   display: grid;

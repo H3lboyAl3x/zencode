@@ -146,3 +146,94 @@
   color: #777;
   margin-top: 50px;
 }
+
+.containerForm {
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.formGroup {
+  margin-bottom: 30px;
+}
+
+.formGroup h3 {
+  color: #06448a;
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  border-left: 4px solid #dba100;
+  padding-left: 10px;
+}
+
+.gridInput {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.field label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #444;
+}
+
+.field input, .field select {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: 0.3s;
+}
+
+.field input:focus, .field select:focus {
+  outline: none;
+  border-color: #dba100;
+  box-shadow: 0 0 0 3px rgba(219, 161, 0, 0.1);
+}
+
+.acoes {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+}
+
+.btnSalvar {
+  background: #06448a;
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btnSalvar:hover {
+  background: #043368;
+}
+
+.btnCancelar {
+  background: #f4f4f4;
+  color: #666;
+  border: 1px solid #ddd;
+  padding: 12px 30px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btnCancelar:hover {
+  background: #e8e8e8;
+}

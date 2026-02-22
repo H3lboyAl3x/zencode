@@ -1,21 +1,22 @@
 "use client";
+
 import { useState, useEffect } from "react";
 import styles from "./page.module.css";
 import axios from "axios";
 import Link from "next/link";
 
 interface Candidato {
-    id: number;
-    nome: string;
-    cargo: string;
-    email: string;
-    telefone: string;
-    nif: string;
+  id: number;
+  nome: string;
+  cargo: string;
+  email: string;
+  telefone: string;
+  nif: string;
 }
 
 export default function Home() {
-    const [listaCandidatos, setListaCandidatos] = useState<Candidato[]>([]);
-    const [processo, setprocesso] = useState(true);
+  const [listaCandidatos, setListaCandidatos] = useState<Candidato[]>([]);
+  const [processo, setprocesso] = useState(true);
 
   const carregarDados = async () => {
     try {
@@ -23,7 +24,10 @@ export default function Home() {
       const resCandidatos = await axios.get("http://localhost:5000/zencode/API/candidato");
       const resCredencias = await axios.get("http://localhost:5000/zencode/API/credencia");
 
-      const Combinar: Candidato[] = resCandidatos.data.filter((cand: any) => cand.estado === false) .map((cand: any) => {
+      const Combinar: Candidato[] = resCandidatos.data
+        .filter((cand: any) => cand.estado === true) 
+        .map((cand: any) => {
+          
           const credencial = resCredencias.data.find(
             (cred: any) => cred.id === cand.id
           );
@@ -39,9 +43,9 @@ export default function Home() {
         });
 
       setListaCandidatos(Combinar);
-    }catch (error) {
+    } catch (error) {
       console.error("Erro ao carregar dados:", error);
-    }finally {
+    } finally {
       setprocesso(false);
     }
   };
@@ -59,15 +63,15 @@ export default function Home() {
 
       <nav className={styles.nav}>
         <ul>
-          <li><a className={styles.active}>Pendentes</a></li>
-          <li><a href="/pendentes">Aceites</a></li>
+          <li><a href="/">Pendentes</a></li>
+          <li><a href="#" className={styles.active}>Aceites</a></li>
         </ul>
       </nav>
 
       <main className={styles.destaque}>
         <div className={styles.tituloSecao}>
-          <h2>Candidatos Disponíveis</h2>
-          <button onClick={carregarDados} className={styles.btnAtualizar}>Atualizar lista</button>
+          <h2>Candidatos Aceites</h2>
+          <button onClick={carregarDados} className={styles.btnAtualizar}>Atualizar</button>
         </div>
 
         {processo ? (
@@ -81,14 +85,13 @@ export default function Home() {
                   <div className={styles.info}>
                       <p><strong>Email:</strong> {item.email}</p>
                       <p><strong>Tel:</strong> {item.telefone}</p>
-                      <p><strong>NIF:</strong> {item.telefone}</p>
+                      <p><strong>NIF:</strong> {item.nif}</p>
                   </div>
                   <Link href={`/analizar/${item.id}`} className={styles.btnPerfil}>Ver Perfil</Link>
               </div>
             ))}
           </div>
         )}
-        <button className={styles.btnAtualizar}><a href="/adicionar">Adicionar novo</a></button>
       </main>
 
       <footer className={styles.footer}>
