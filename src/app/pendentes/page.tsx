@@ -75,7 +75,7 @@ export default function Home() {
         </div>
 
         {processo ? (
-          <div className={styles.loading}>Carregandot talenos...</div>
+          <div className={styles.loading}>Carregando lista...</div>
         ) : (
           <div className={styles.cards}>
             {listaCandidatos.map((item, index) => (
