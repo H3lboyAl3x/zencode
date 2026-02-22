@@ -18,16 +18,18 @@ interface DetalhesCandidato {
 
 export default function AnaliseCandidato() {
   const params = useParams();
-  const id = params.id;
+  const id = Array.isArray(params?.id) ? params.id[0] : params?.id;
   const router = useRouter();
   const [candidato, setCandidato] = useState<DetalhesCandidato | null>(null);
   const [loading, setLoading] = useState(true);
 
+  if (!id) return <div className={styles.loading}>Carregando...</div>;
+
   useEffect(() => {
     const buscarDetalhes = async () => {
       try {
-        const resCandidatos = await axios.get("https://zencode-api-tk96.onrender.com/zencode/API/candidato");
-        const resCredencias = await axios.get("https://zencode-api-tk96.onrender.com/zencode/API/credencia");
+        const resCandidatos = await axios.get(`https://zencode-api-tk96.onrender.com/zencode/API/candidato/${id}`);
+        const resCredencias = await axios.get(`https://zencode-api-tk96.onrender.com/zencode/API/credencia/${id}`);
         
 
         setCandidato({
@@ -81,7 +83,7 @@ export default function AnaliseCandidato() {
         <div className={styles.painel}>
           <div className={styles.topoPainel}>
             <div className={styles.avatar}>
-               {candidato.nome.charAt(0)}
+              {candidato.nome?.charAt(0) || "?"}
             </div>
             <div>
               <h2>{candidato.nome}</h2>
