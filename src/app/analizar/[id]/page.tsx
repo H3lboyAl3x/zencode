@@ -26,8 +26,8 @@ export default function AnaliseCandidato() {
   useEffect(() => {
     const buscarDetalhes = async () => {
       try {
-        const resCandidatos = await axios.get("http://localhost:5000/zencode/API/candidato");
-        const resCredencias = await axios.get("http://localhost:5000/zencode/API/credencia");
+        const resCandidatos = await axios.get("https://zencode-api-tk96.onrender.com/zencode/API/candidato");
+        const resCredencias = await axios.get("https://zencode-api-tk96.onrender.com/zencode/API/credencia");
         
 
         setCandidato({
@@ -46,9 +46,20 @@ export default function AnaliseCandidato() {
     if (id) buscarDetalhes();
   }, [id]);
 
+  const contratar = async() => {
+    const response = await axios.get(`https://zencode-api-tk96.onrender.com/zencode/API/candidato/${id}`);
+    await axios.put(`https://zencode-api-tk96.onrender.com/zencode/API/candidato/${id}`, {
+      nome: response.data.nome,
+      genero: response.data.genero,
+      estado: true,
+      cargo: response.data.cargo,
+    })
+    router.back();
+  }
+
   const eliminar = async() => {
-    await axios.delete(`http://localhost:5000/zencode/API/credencia/${id}`);
-    await axios.delete(`http://localhost:5000/zencode/API/candidato/${id}`);
+    await axios.delete(`https://zencode-api-tk96.onrender.com/zencode/API/credencia/${id}`);
+    await axios.delete(`https://zencode-api-tk96.onrender.com/zencode/API/candidato/${id}`);
     router.back();
   }
 
@@ -99,8 +110,14 @@ export default function AnaliseCandidato() {
               <p><strong>ID Interno:</strong> #{candidato.id}</p>
             </section>
           </div>
-
-          <button className={styles.btnRejeitar} onClick={eliminar}>Descartar</button>
+          {candidato.estado === true ? (
+              <button className={styles.btnRejeitar} onClick={eliminar}>Descartar</button>
+          ) : (
+            <>
+              <button className={styles.btnRejeitar} onClick={eliminar}>Descartar</button>
+              <button className={styles.btnAtualizar} onClick={contratar}>Contratar</button>
+            </>
+          )}
         </div>
       </main>
     </div>

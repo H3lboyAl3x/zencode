@@ -42,8 +42,8 @@ export default function CadastroCandidato() {
         nif: formData.nif
       };
 
-      await axios.post("http://localhost:5000/zencode/API/candidato", payloadCandidato);
-      await axios.post("http://localhost:5000/zencode/API/credencia", payloadCredencial);
+      await axios.post("https://zencode-api-tk96.onrender.com/zencode/API/candidato", payloadCandidato);
+      await axios.post("https://zencode-api-tk96.onrender.com/zencode/API/credencia", payloadCredencial);
       
       router.push("/");
     } catch (error) {

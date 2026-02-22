@@ -21,8 +21,8 @@ export default function Home() {
   const carregarDados = async () => {
     try {
       setprocesso(true);
-      const resCandidatos = await axios.get("http://localhost:5000/zencode/API/candidato");
-      const resCredencias = await axios.get("http://localhost:5000/zencode/API/credencia");
+      const resCandidatos = await axios.get("https://zencode-api-tk96.onrender.com/zencode/API/candidato");
+      const resCredencias = await axios.get("https://zencode-api-tk96.onrender.com/zencode/API/credencia");
 
       const Combinar: Candidato[] = resCandidatos.data
         .filter((cand: any) => cand.estado === true) 
